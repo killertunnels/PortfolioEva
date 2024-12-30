@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Eva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="SVG/icon.svg">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        html, body {
+    margin: 0;
+    margin-top: 00px;
+    padding: 0;
+    overflow-x: hidden; /* Hides horizontal overflow */
+    width: 100%; /* Ensures full width usage */
+    box-sizing: border-box;
+}
+
+        .fade-in-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white; /* Fondo blanco para el fade-in */
+    z-index: 9999; /* Asegúrate de que esté encima de todo */
+    animation: fadeOut 1s ease-in-out forwards; /* Animación */
+    pointer-events: none;
+}
+
+/* Animación del fade-in */
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Completamente visible */
+    }
+    100% {
+        opacity: 0; /* Completamente invisible */
+    }
+}
+
+        .logo {
+            width: 700px;
+            height: 320px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/logo.SVG");
+            transition: all 0.5s ease;
+            display: block;
+        }
+
+        
+        .work {
+            width: 200px;
+            height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.5s ease;
+            position: relative;
+            bottom: 350px;
+        }
+
+        #icono2D {
+            background-image: url("SVG/2d_work.svg");
+        }
+
+        #icono3D {
+            background-image: url("SVG/3d_work.svg");
+        }
+
+
+        .cuerpo {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            text-align: left;
+            margin-top: 20px;
+           
+        }
+
+            .destacado {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 800;
+            text-align: left;
+           
+        }
+
+           .boton {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 900;
+            text-align: center;
+           font-size: 15px;
+        }
+
+
+
+        .btn-custom {
+            border: 3px solid #5862f7;
+            border-radius: 50px;
+            color: #5862f7;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+           
+        }
+
+        .btn-custom:hover {
+            background-color: #5862f7;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #74BC20;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+                .btn-custom-black {
+            border: 3px solid #333;
+            border-radius: 50px;
+            color: #333;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+            font-family: Montserrat;
+            text-decoration: none;
+           
+        }
+
+        .btn-custom-black:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #74BC20;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+         .video_hima_idle {
+
+            width: 500px;
+            height: auto;
+            z-index: -12; /* El video queda detrás del contenido */
+        }
+
+        /* Ajuste del video */
+        .video_hima_idle video {
+            width: 700px;
+            height: auto;
+            object-fit: cover; /* Escalar el video para cubrir el área */
+            margin-top: 80px;
+        }
+
+         .video_astro_idle {
+            position: absolute;
+            top:50px;
+            left: 1150px;
+            width: 20px;
+            height: auto;
+            z-index: -12; /* El video queda detrás del contenido */
+        }
+
+        /* Ajuste del video */
+        .video_astro_idle video {
+            width: 400px;
+            height: auto;
+            object-fit: cover; /* Escalar el video para cubrir el área */
+        }
+
+        .top-bar {
+            position: fixed;
+            top: -100px; /* Empieza fuera de la vista */
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            z-index: 1000;
+            text-align: center;
+            font-size: 1.5rem;
+            animation: slideDown 2s ease-out forwards; /* Animación al cargar */
+        }
+
+        /* Definición de la animación */
+        @keyframes slideDown {
+            from {
+                top: -100px; /* Comienza fuera */
+            }
+            to {
+                top: 0; /* Termina en su posición fija */
+            }
+        }
+
+
+        .logo-home {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #5862f7; /* Color al pasar el ratón */
+        }
+
+    .social-icons-bottom a {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+ 
+            box-sizing: border-box;
+            padding-bottom: 40px;
+        }
+
+        .social-icons-bottom a:hover {
+            color: #5862f7; /* Color al pasar el ratón */
+        }
+
+        .work-icons {
+            display: flex;
+            flex-direction: column; /* Coloca los íconos uno encima del otro */
+            align-items: flex-end; /* Alinea ambos íconos a la derecha */
+        }
+
+        .graphictunnels-svg {
+         display: flex;
+        justify-content: center; /* Centra el contenido horizontalmente */
+        flex: 1; /* Ocupa el espacio central */
+        }
+
+        .graphictunnels-icon {
+        width: 250px; /* Ajusta el tamaño del SVG */
+        height: auto; /* Mantiene la proporción */
+        }
+
+         .titulo_trabajo{
+            
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        font-size: 50px;
+        line-height: 1.2;
+        color:#333;
+        text-align: left;
+        margin-top: 80px;
+        }
+
+        #doodle_hima{
+            width: 550px;
+            height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/hima sticker.png");
+            transition: all 0.5s ease;
+            position: relative;
+            bottom: 30px;
+        }
+        #software_hima{
+            width: 150px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/hima_software.svg");
+            transition: all 0.5s ease;
+
+        }
+
+                #software_lord{
+            width: 267px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/lord_software.svg");
+            transition: all 0.5s ease;
+
+        }
+
+            #software_sabotaje{
+            width: 200px;
+            height: auto;
+            margin-top: 30px;
+
+        }
+
+        #software_happy{
+            width: 100px;
+            height: auto;
+            margin-top: 30px;
+
+        }
+
+
+                    .video-lord {
+            top: 1300px;
+            max-width: 600px;
+            align-items: center;
+        }
+
+         .video-container {
+
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+
+        .video-hima {
+           
+            max-width: 600px;
+            margin:auto;
+            margin-top: 20px;
+        }
+
+        .video-astro {
+            top: 750px;
+            max-width: 1100px;
+            margin:auto;
+        }
+
+            .video-lord {
+            top: 4070px;
+            max-width: 600px;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .video-sheets {
+            top: 2100px;
+            max-width: 1400px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .contenedor-boton{
+            text-align: center;
+        }
+
+        .btn-audio {
+            margin-top: 30px;
+            margin-bottom: 30PX;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #ffffff;
+            border: 3px solid #5862f7;
+            border-radius: 50px;
+            color: #5862f7;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+   
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .btn-audio:hover {
+            background-color: #5862f7;
+            color: white;
+        }
+
+        .posicion_texto{
+            position: relative;
+            right: 75px;
+            margin-top: 80px;
+        }
+
+                #doodle_lord{
+            width: 600px;
+            height: 500px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/bocetos_ancianito.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+   
+            
+        }
+
+            #render1_lord{
+            width: 595px;
+            height: 750px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/render_1.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+            position: relative;
+            left: 70px;
+            bottom:550px;
+            
+        }
+
+        #render2_lord{
+            width: 500px;
+            height: 750px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/render_2.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+            position: relative;
+            left: 70px;
+            bottom:550px;
+            
+        }
+
+                .botones_final{
+            position: relative;
+            top: 300px;
+            margin:auto;
+        }
+
+         .video-sheet-hima {
+            width: 650px;
+            justify-content: center;
+            align-items: center;
+        }
+
+                  #renders_lord{
+            width: 100vw;
+            height: 850px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/renders_lord.png");
+            transition: all 0.5s ease;
+            margin:auto;
+            margin-top: 0
+         
+            
+
+        }
+
+     .portada-sabotaje {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.portada-sabotaje img {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+}
+
+     .portada-milk {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.portada-milk img {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+}
+
+     .happy2 {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.happy2 img {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+}
+
+     .mapa2 {
+    width: 120%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.mapa2 img {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; 
+    margin-left: -130px;
+
+}
+
+    .packaging {
+    width: 105%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: auto; 
+
+    /* Centra el contenedor si necesario */
+
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+    padding: 0PX;
+        margin-top: 40PX;
+}
+
+.packaging img {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; 
+
+
+}
+    /* Centra si es necesario */
+     .sabotaje1 {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.sabotaje1 img {
+    width: 100%;
+    height: auto;
+    display: block; 
+/* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+}
+
+     .happy1 {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.happy1 img {
+    width: 130%;
+    height: auto;
+    display: block; 
+/* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+    margin-left: -90px;
+}
+
+     .mapa {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+.mapa img {
+    width: 100%;
+    height: auto;
+    display: block; 
+/* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+    margin-left: -90px;
+}
+
+
+ #margen-superior-torre{
+    margin-top: -350px;
+ }
+
+  #margen-superior-happy{
+    margin-top: -200px;
+ }
+
+  #margen-superior-texto{
+    margin-top: -140px;
+ }
+
+  #margen-superior-texto-happy{
+    margin-top: -40px;
+ }
+
+ .neb{
+    height: auto;
+    width:auto;
+ }
+
+ #ods{
+    height: 100%
+    width:auto;
+ }
+
+  #ods2{
+    height: auto;
+    width:100%;
+    margin: auto;
+    margin-top: 40px;
+    margin-right: 90px;
+ }
+
+   #ods2  img{
+    height: auto;
+    width:100%;
+    margin: auto;
+
+ }
+
+      #sabotaje2 {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: 0 auto; /* Centra el contenedor si necesario */
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+}
+
+#sabotaje2 img {
+    width: 100%;
+    height: auto;
+    display: block; 
+/* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+}
+
+#video-pitch{
+    width: 70%;
+    height: auto;
+    margin:auto;
+}
+
+.packaging-margin{
+    margin-left: 60px; 
+    margin-right: 60px;
+}
+
+
+        @media (max-width: 768px) {
+
+
+            
+        .social-icons a,
+        .video_hima_idle video,
+        .video_astro_idle video,
+        .video_astro_idle,
+        .video_hima_idle {
+            display: none;
+            animation: none;
+            position: absolute;
+            }
+
+        .graphictunnels-svg {
+    display: flex;
+    justify-content: center; /* Centra el logo horizontalmente */
+    align-items: center; /* Centra el logo verticalmente */
+    flex: 1; /* Ocupa el espacio central */
+    position: absolute; 
+    right: 5vw;
+}
+
+    .graphictunnels-icon {
+        max-width: 50vw; /* Ajusta el tamaño del SVG para que sea más pequeño */
+        height: 5vh
+
+
+    }
+.top-bar{
+    width: 100vw;
+    height: 5vh;
+}
+             .custom-mb {
+    margin-bottom: 2.25rem; /* Valor intermedio entre mb-4 (1.5rem) y mb-5 (3rem) */
+}
+             .contact {
+        display: none; /* Oculta las flechas */
+    }
+            .cuerpo{
+                font-size: 14px;
+                padding: 20px;
+                 margin: 0px;
+                 position: relative;
+                 bottom: 12px;
+            }
+            .work{
+                width: 180px;
+                position: relative;
+                bottom:30px;
+
+            }
+
+             .work-icons {
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* Centra los íconos horizontalmente */
+        justify-content: center; /* Opcional: alinea verticalmente si hay espacio */
+    }
+
+            #icono2D {
+            background-image: url("SVG/2d_work.svg");
+            height: 165px;
+        }
+
+        #icono3D {
+            background-image: url("SVG/3d_work.svg");
+            height: 165px;
+        }
+        .social-icons a {
+         
+
+        }
+
+        .boton {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+           font-size: 15px;
+           position: relative;
+           bottom: 30px;
+           margin: auto;
+           display: block;
+        }
+
+        #doodle_hima{
+            width: 100vw;
+            position: relative;
+            bottom: 40PX;
+            right: 12px;
+
+        }
+
+        .titulo_trabajo{
+            font-size: 35px;
+            margin-left: 18px;
+            margin-top: 60px;
+        }
+
+         .titulo_trabajo.lord{
+            
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        font-size: 50px;
+        line-height: 1.2;
+        color:#333;
+        text-align: left;
+        }
+
+        #lord_titulo{
+            margin-left: 30px;
+            position: relative;
+            top: 30px;
+        }
+
+        #software_hima{
+            width: 100px;
+            height: 60px;
+            background-size: contain;
+            margin-top: -30px;
+            margin-left: 18px;
+        }
+
+        #software_lord{
+            width: 180px;
+            height: 60px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/lord_software.svg");
+            transition: all 0.5s ease;
+            margin-left: 15px;
+            position: relative;
+            bottom: 28px;
+            margin-bottom: 20px;
+
+        }
+
+        .video-hima {
+            top: 920px;
+            margin-top: -60PX;
+       }
+        .video-astro {
+            top: 610px;
+       }
+
+       .video-sheets{
+        top: 1360PX;
+        margin-top: 20px;
+       }
+        .video-sheet-hima {
+            
+            max-width: 90%;
+            margin-top: 0px;
+            margin:auto;
+        }
+
+                .posicion_texto{
+            position: relative;
+            right: 0px;
+            margin-top: 40px;
+        }
+
+        #doodle_lord{
+            width: 90vw;
+   margin-top: -140PX;
+   margin-bottom: -140PX;
+        }
+
+             #renders_lord{
+            width: 100vW;
+            height: 320px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/renders_lord.png");
+            transition: all 0.5s ease;
+            margin:auto;
+            margin-top: -40px;
+
+            
+
+        }
+
+         .btn-audio {
+            margin-bottom: 20px;
+         }
+
+             .video-lord {
+            max-width: 90VW;
+            margin-top: -40px;
+        }
+
+        .portada-sabotaje{
+    
+            overflow-x: hidden;
+            display: block;
+        }
+         #margen-superior-torre{
+    margin-top: -120px;
+ }
+        #margen-superior-texto{
+            margin-top: 0px;
+        }
+
+         .neb{
+    width: 250px;
+    height: auto;
+    margin: auto;
+    margin-top: -30px;
+
+ }
+
+ #software_sabotaje{
+            width: 150px;
+            height: auto;
+            margin-top: 20px;
+
+        }
+
+         #software_happy{
+            width: 75px;
+            height: auto;
+            margin-top: 20px;
+
+        }
+#ods{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: -70px;
+
+}
+
+#ods img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+}
+
+#cartas-sabotaje{
+    margin-top: -45px;
+}
+
+#sabotaje2{
+    margin-top: -40px;
+}
+
+#video-pitch{
+    width: 100%;
+    margin-top: -10px;
+}
+
+.happy1 img {
+    width: 100%;
+    height: auto;
+    display: block; 
+/* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; /* Centra si es necesario */
+ }
+  #margen-superior-happy{
+    margin-top: -90px;
+ }
+
+   #margen-superior-texto-happy{
+    margin-top: -20px;
+ }
+
+ .portada-milk{
+    margin-top: -20px;
+ }
+
+ .mapa2{
+    width: 100%;
+    margin-left: auto;
+    margin-top: 10px;
+
+ }
+
+  .mapa2 img{
+    width: 100%;
+    margin-left: auto;
+
+ }
+
+ .mapa img{
+    margin-left: auto;
+ }
+
+.happy2{
+    margin-top:-60px;
+}
+
+#ods2 {
+    width: 100%;
+    height:auto;
+    margin-top: 0px;
+    margin-bottom: 35px;
+}
+
+        .packaging {
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    height: auto; /* Mantiene la proporción */
+    transition: all 0.5s ease; /* Animación suave para cambios */
+    margin: auto; 
+align-items: center;
+    /* Centra el contenedor si necesario */
+
+    text-align: center; /* Alinea texto o contenido dentro del contenedor */ 
+    justify-content: center;
+    padding: 0PX;
+        margin-top: 40PX;
+}
+
+.packaging img {
+    width: 100%;
+    height: auto;
+    display: block; /* Evita espacios no deseados debajo de la imagen */
+    margin: 0 auto; 
+
+
+}
+
+.packaging-margin{
+    margin-left: 0px; 
+    margin-right: 0px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Capa para el efecto de fade-in -->
+    <div class="fade-in-overlay"></div>
+
+  <!-- Barra Superior Fija -->
+    <div class="top-bar d-flex justify-content-between align-items-center">
+        <!-- Icono de Home a la Izquierda -->
+        <a href="index.html" class="logo-home"><i class="fa fa-asterisk" aria-hidden="true"></i></a>
+
+          <div class="graphictunnels-svg"> <a href="https://www.instagram.com/graphictunnels/" target="_blank">
+        <img src="SVG/graphictunnels.SVG" alt="graphictunnels" class="graphictunnels-icon"> </a>
+         </div>
+
+
+        <!-- Iconos de Contacto a la Derecha -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/graphictunnels/" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-behance"></i></a>
+            <a href="https://www.linkedin.com/in/eva-robles-haloui-9066a1268/" target="_blank"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:robleshaloui@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+        </div>
+    </div>
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+    <!-- Row 1: Una columna -->
+    <div class="row mb-3 align-items-center">
+        <div class="col-12 p-0">
+            <div class="portada-sabotaje">
+                <div class="container-fluid p-0">
+  <!-- Imagen para escritorio -->
+                 <img src="2D_work/portada_sabotaje2.png" alt="Escritorio" class="img-fluid d-none d-md-block">
+
+  <!-- Imagen para móvil -->
+                <img src="2D_work/portada_sabotaje2_movil.png" alt="Móvil" class="img-fluid d-block d-md-none">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+   <div class="container">
+    <!-- Row 2: Dos columnas (columna derecha arriba en móvil) -->
+    <div class="row mb-3">
+      <div class="col-md-6 order-2 order-md-1 p-3">
+        <div id="margen-superior-texto">
+        <div class="cuerpo">
+        This group academic project is framed within the report <a href="https://www.arup.com/insights/2050-scenarios-four-plausible-futures/"  target="_blank">2050 Scenarios: Four Plausible Futures</a>, which analyzes potential future ways of living by addressing the connection between <span class="destacado">planetary health</span> and <span class="destacado">social conditions</span>. The proposed scenarios range from societal collapse to a model of full coexistence with nature. <p></p>
+
+        <span class="destacado">SABOTAJE</span> is a board game inspired by a vision of the year 2050 scenarios, where players attempt to either save or sabotage the environmental future. It is based on the values of the <a href="https://new-european-bauhaus.europa.eu/index_en" target="_blank"> New European Bauhaus (NEB)</a>, which promotes three fundamental principles:
+         <div id="software_sabotaje"> <img src="2D_work/SVG/sabotaje_software.svg"></div>
+    </div>
+   
+</div>
+      </div>
+      <div class="col-md-6 order-1 order-md-2 p-3">
+        <div id="margen-superior-torre">
+        <div class="sabotaje1">
+        <img src="2D_work/sabotaje1.png">
+    </div>
+</div>
+      </div>
+    </div>
+
+    <!-- Row 3: Tres columnas -->
+    <div class="row mb-3">
+        
+      <div class="col-md-4 p-3">
+        <div class="container-fluid p-0">
+            <div class="neb">
+  <!-- Imagen para escritorio -->
+                 <img src="2D_work/SVG/beautiful2.svg" alt="Escritorio" class="img-fluid d-none d-md-block">
+
+  <!-- Imagen para móvil -->
+                <img src="2D_work/SVG/beautiful_1.svg" alt="Móvil" class="img-fluid d-block d-md-none">
+            </div>
+                </div>
+            <div class="cuerpo">
+                
+From the color palette to the character illustrations, SABOTAJE emphasizes <span style="color: #31A2FF"> aesthetics </span> to provide a playing experience that is not only fun but also <span style="color: #31A2FF"> visually pleasing </span> and <span style="color: #31A2FF"> stimulating</span>.
+            </div>
+
+      </div>
+
+<div class="col-md-4 p-3">
+      <div class="container-fluid p-0">
+            <div class="neb">
+  <!-- Imagen para escritorio -->
+                 <img src="2D_work/SVG/together_desktop.svg" alt="Escritorio" class="img-fluid d-none d-md-block">
+
+  <!-- Imagen para móvil -->
+                <img src="2D_work/SVG/together_1.svg" alt="Móvil" class="img-fluid d-block d-md-none">
+            </div>
+                </div>
+            <div class="cuerpo">
+                From valuing <span style="color: #FF6700"> diversity </span> and <span style="color: #FF6700">equality </span> for all to ensuring <span style="color: #FF6700"> accessibility </span> and affordability through audio and video instructions and tutorials, with easy-to-handle pieces and educational content on sustainability for the whole family.
+            </div>
+    </div>
+
+      <div class="col-md-4 p-3">
+         <div class="container-fluid p-0">
+            <div class="neb">
+  <!-- Imagen para escritorio -->
+                 <img src="2D_work/SVG/sustainable_1.svg" alt="Escritorio" class="img-fluid d-none d-md-block">
+
+  <!-- Imagen para móvil -->
+                <img src="2D_work/SVG/sustainable_1.svg" alt="Móvil" class="img-fluid d-block d-md-none">
+            </div>
+        </div>
+   
+            <div class="cuerpo">
+                SABOTAJE is made with <span style="color: #74BC20"> recycled</span>, <span style="color: #74BC20"> renewable</span>, and <span style="color: #74BC20">biodegradable</span> materials, designed for easy component identification and featuring a modular design that facilitates <span style="color: #74BC20">disassembly</span> and <span style="color: #74BC20">material separation</span>.
+            </div>
+    </div>
+</div>
+
+
+    <!-- Row 4: Dos columnas -->
+    <div class="row mb-3 text-center" style="margin-top: 50px">
+      <div class="col-md-6 p-3 order-2 order-md-1">
+            <div class="cuerpo">
+                In SABOTAJE, each player assumes a role:  <span class="destacado">saboteur</span> or  <span class="destacado">savior</span>. The saboteurs must ensure the mission's failure, while the saviors strive to  complete the missions and eliminate the saboteurs. Their lives depend on the  <span class="destacado">tower</span>, symbolizing the  <span class="destacado">planet's balance</span>.
+            </div>
+      </div>
+      <div class="col-md-6 text-end p-3 order-1 order-md-2">
+        <div id="ods">
+             <img src="2D_work/ods.png">
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 5: Una columna -->
+    <div class="row mb-3">
+      <div class="col  p-3">
+            <div id="cartas-sabotaje">
+           <video class="video" autoplay muted loop>
+              <source src="2D_work/cartas-png_1.mp4" type="video/mp4">
+           </video>
+       </div>
+      </div>
+    </div>
+
+    <!-- Row 6: Una columna -->
+    <div class="row mb-3">
+      <div class="col text-center p-3">
+        <div id="sabotaje2">
+            <img src="2D_work/sabotaje2.png">
+        </div>
+      </div>
+    </div>
+ 
+<div class="row mb-3 text-center" style="margin-top: -10px">
+  <!-- Primera columna -->
+  <div class="col-md-6 p-3">
+    <div class="sabotaje1">
+      <img src="2D_work/bocetos_sabotaje.png" alt="Boceto sabotaje">
+    </div>
+  </div>
+
+  <!-- Segunda columna -->
+  <div class="col-md-6 p-3">
+    <div class="sabotaje1">
+      <img src="2D_work/propuesta_sabotaje.png" alt="Propuesta sabotaje">
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Row 7: Una columna -->
+    <div class="row mb-3">
+      <div class="col  p-3">
+        <div id="video-pitch">
+         <video class="video" autoplay muted loop>
+            <source src="2D_work/G4_Sabotaje_Video_Pitch.mp4" type="video/mp4">
+         </video>
+          <div class="container">
+                            <div class="contenedor-boton">
+                                <button class="btn-audio">AUDIO ON</button>
+                             </div>
+                        </div>
+     </div>
+      </div>
+    </div>
+</div>
+    <!-- Row 8: Una columna -->
+
+    <div class="row mb-3 align-items-center">
+      <div class="col-12 p-0">
+        <div class="container-fluid p-0">
+            <div class="portada-milk"> 
+                 <img src="2D_work/portada_milk.png" alt="Escritorio" class="img-fluid d-none d-md-block">
+
+  <!-- Imagen para móvil -->
+                <img src="2D_work/portada_milk_mobile.png" alt="Móvil" class="img-fluid d-block d-md-none">
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Row 2: Dos columnas (columna derecha arriba en móvil) -->
+<div class="row mb-3">
+  <!-- Primera columna -->
+  <div class="col-md-6 p-3 order-last order-md-first">
+    <div id="margen-superior-texto-happy">
+      <div class="cuerpo">
+         <span class="destacado">Happy Milk</span> arises from the initiative to create a brand whose values are  <span class="destacado">ethics</span>,  <span class="destacado">sustainability</span>, and  <span class="destacado">positivity</span>. It offers a line of pocket-sized milk cartons in three different flavors, perfect for taking to school, work, or on trips.
+        <p></p>
+        This academic project was developed with the goal of creating a  <span class="destacado">sustainable milk brand</span> that directly addresses the sustainability challenges associated with milk commercialization. Additionally, the brand incorporates an anti-bullying message to promote  <span class="destacado">positive social impact</span>.
+        <div id="software_happy">
+          <img src="SVG/happy_software.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segunda columna -->
+  <div class="col-md-6 p-3 order-first order-md-last">
+    <div id="margen-superior-happy">
+      <div class="happy1">
+        <img src="2D_work/happy1.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+   <div class="row mb-3 align-items-center">
+      <div class="col-12 p-0">
+            <div class="happy2"> 
+                 <img src="2D_work/happy2.png" alt="Escritorio">
+
+ 
+            </div>
+        </div>
+      </div>
+
+
+
+<div class="row mb-3">
+  <!-- Primera columna: ahora será la última en mobile -->
+  <div class="col-12 col-md-4 align-items-center order-3 order-md-1 P-3">
+    <div class="mapa">
+      <img src="2D_work/boceto_milk.png" alt="Boceto Milk">
+    </div>
+  </div>
+
+  <!-- Segunda columna: ahora será la segunda en mobile -->
+  <div class="col-12 col-md-4 order-2">
+    <div class="mapa2">
+      <img src="2D_work/mapa_milk.png" alt="Escritorio">
+    </div>
+  </div>
+
+  <!-- Tercera columna: ahora será la primera en mobile -->
+  <div class="col-12 col-md-4 order-1 order-md-3 MB-3">
+    <div class="cuerpo">
+      Considering the design challenge I was facing, I clearly saw the need to focus on  <span class="destacado">animal exploitation</span> in the dairy industry and the  <span class="destacado">pollution</span> that packaging could cause.
+      <p></p>
+      On the other hand, since the majority of people are part of the group of witnesses to a harassment situation, I found it crucial to address them, encouraging them to  <span class="destacado">take action</span> against any repeated abuse they witness.
+    </div>
+    <div id="ods2">
+        <img src="2D_work/ods2.png">
+    </div>
+  </div>
+</div>
+
+
+
+
+ <div class ="packaging-margin">
+<div class="row align-items-center">
+   
+  <div class="col-md-4 align-items-center">
+    <div class="packaging">
+      <img src="2D_work/rosa.png" alt="packaging rosa">
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="packaging">
+      <img src="2D_work/azul.png" alt="packaging azul">
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="packaging">
+      <img src="2D_work/amarillo.png" alt="packaging amarillo">
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="container text-center my-5">
+    <div class="row">
+        <div class="col-md-4 custom-mb">
+            <a href="3D_work2.html" class="btn-custom-black mx-2">
+            3D WORK
+            </a>
+        </div>
+        <div class="col-md-4 custom-mb">
+            <a href="CV.html" class="btn-custom-black mx-2">
+                ABOUT ME
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="index.html" class="btn-custom-black mx-2">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="row mb-3">
+            <div class="col align-items-center container text-center">
+                <div class="social-icons-bottom mt-3">
+                    <a href="https://www.instagram.com/graphictunnels/" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-behance"></i></a>
+                    <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <a href="mailto:robleshaloui@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="height: 30px;"></div>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+    <script>
+ // Seleccionar todos los botones y videos
+        const videos = document.querySelectorAll('.video'); // Selecciona todos los videos
+        const buttons = document.querySelectorAll('.btn-audio'); // Selecciona todos los botones
+
+        // Iterar sobre los botones y enlazar comportamiento
+        buttons.forEach((button, index) => {
+            const video = videos[index]; // Relaciona cada botón con su respectivo video
+
+            button.addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false; // Activa el audio
+                    button.textContent = 'AUDIO OFF';
+                } else {
+                    video.muted = true; // Silencia el audio
+                    button.textContent = 'AUDIO ON';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

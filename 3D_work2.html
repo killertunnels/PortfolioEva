@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D work // Eva Robles</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+        <link rel="icon" href="SVG/icon.svg">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        html, body {
+    margin: 0;
+    margin-top: 00px;
+    padding: 0;
+    overflow-x: hidden; /* Hides horizontal overflow */
+    width: 100%; /* Ensures full width usage */
+    box-sizing: border-box;
+}
+
+        .fade-in-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white; /* Fondo blanco para el fade-in */
+    z-index: 9999; /* Asegúrate de que esté encima de todo */
+    animation: fadeOut 1s ease-in-out forwards; /* Animación */
+    pointer-events: none;
+}
+
+/* Animación del fade-in */
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Completamente visible */
+    }
+    100% {
+        opacity: 0; /* Completamente invisible */
+    }
+}
+
+        .logo {
+            width: 700px;
+            height: 320px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/logo.SVG");
+            transition: all 0.5s ease;
+            display: block;
+        }
+
+        
+        .work {
+            width: 200px;
+            height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.5s ease;
+            position: relative;
+            bottom: 350px;
+        }
+
+        #icono2D {
+            background-image: url("SVG/2d_work.svg");
+        }
+
+        #icono3D {
+            background-image: url("SVG/3d_work.svg");
+        }
+
+
+        .cuerpo {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            text-align: left;
+            margin-top: 20px;
+           
+        }
+
+           .boton {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 900;
+            text-align: center;
+           font-size: 15px;
+        }
+
+
+
+        .btn-custom {
+            border: 3px solid #5862f7;
+            border-radius: 50px;
+            color: #5862f7;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+           
+        }
+
+        .btn-custom:hover {
+            background-color: #5862f7;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5862f7;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+                .btn-custom-black {
+            border: 3px solid #333;
+            border-radius: 50px;
+            color: #333;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+            font-family: Montserrat;
+            text-decoration: none;
+           
+        }
+
+        .btn-custom-black:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+         .video_hima_idle {
+
+            width: 500px;
+            height: auto;
+            z-index: -12; /* El video queda detrás del contenido */
+        }
+
+        /* Ajuste del video */
+        .video_hima_idle video {
+            width: 700px;
+            height: auto;
+            object-fit: cover; /* Escalar el video para cubrir el área */
+            margin-top: 80px;
+        }
+
+         .video_astro_idle {
+            position: absolute;
+            top:50px;
+            left: 1150px;
+            width: 20px;
+            height: auto;
+            z-index: -12; /* El video queda detrás del contenido */
+        }
+
+        /* Ajuste del video */
+        .video_astro_idle video {
+            width: 400px;
+            height: auto;
+            object-fit: cover; /* Escalar el video para cubrir el área */
+        }
+
+        .top-bar {
+            position: fixed;
+            top: -100px; /* Empieza fuera de la vista */
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            z-index: 1000;
+            text-align: center;
+            font-size: 1.5rem;
+            animation: slideDown 2s ease-out forwards; /* Animación al cargar */
+        }
+
+        /* Definición de la animación */
+        @keyframes slideDown {
+            from {
+                top: -100px; /* Comienza fuera */
+            }
+            to {
+                top: 0; /* Termina en su posición fija */
+            }
+        }
+
+
+        .logo-home {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #5862f7; /* Color al pasar el ratón */
+        }
+
+    .social-icons-bottom a {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+ 
+            box-sizing: border-box;
+            padding-bottom: 40px;
+        }
+
+        .social-icons-bottom a:hover {
+            color: #5862f7; /* Color al pasar el ratón */
+        }
+
+        .work-icons {
+            display: flex;
+            flex-direction: column; /* Coloca los íconos uno encima del otro */
+            align-items: flex-end; /* Alinea ambos íconos a la derecha */
+        }
+
+        .graphictunnels-svg {
+         display: flex;
+        justify-content: center; /* Centra el contenido horizontalmente */
+        flex: 1; /* Ocupa el espacio central */
+        }
+
+        .graphictunnels-icon {
+        width: 250px; /* Ajusta el tamaño del SVG */
+        height: auto; /* Mantiene la proporción */
+        }
+
+         .titulo_trabajo{
+            
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        font-size: 50px;
+        line-height: 1.2;
+        color:#333;
+        text-align: left;
+        margin-top: 80px;
+        }
+
+        #doodle_hima{
+            width: 550px;
+            height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/hima sticker.png");
+            transition: all 0.5s ease;
+            position: relative;
+            bottom: 30px;
+        }
+        #software_hima{
+            width: 150px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/hima_software.svg");
+            transition: all 0.5s ease;
+
+        }
+
+                #software_lord{
+            width: 267px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/lord_software.svg");
+            transition: all 0.5s ease;
+
+        }
+
+
+                    .video-lord {
+            top: 1300px;
+            max-width: 600px;
+            align-items: center;
+        }
+
+         .video-container {
+
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+
+        .video-hima {
+           
+            max-width: 600px;
+            margin:auto;
+            margin-top: 20px;
+        }
+
+        .video-astro {
+            top: 750px;
+            max-width: 1100px;
+            margin:auto;
+        }
+
+            .video-lord {
+            top: 4070px;
+            max-width: 600px;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .video-sheets {
+            top: 2100px;
+            max-width: 1400px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .contenedor-boton{
+            text-align: center;
+        }
+
+        .btn-audio {
+            margin-top: 30px;
+            margin-bottom: 30PX;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #ffffff;
+            border: 3px solid #5862f7;
+            border-radius: 50px;
+            color: #5862f7;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+   
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .btn-audio:hover {
+            background-color: #5862f7;
+            color: white;
+        }
+
+        .posicion_texto{
+            position: relative;
+            right: 75px;
+            margin-top: 80px;
+        }
+
+                #doodle_lord{
+            width: 600px;
+            height: 500px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/bocetos_ancianito.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+   
+            
+        }
+
+            #render1_lord{
+            width: 595px;
+            height: 750px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/render_1.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+            position: relative;
+            left: 70px;
+            bottom:550px;
+            
+        }
+
+        #render2_lord{
+            width: 500px;
+            height: 750px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/render_2.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+            position: relative;
+            left: 70px;
+            bottom:550px;
+            
+        }
+
+                .botones_final{
+            position: relative;
+            top: 300px;
+            margin:auto;
+        }
+
+         .video-sheet-hima {
+            width: 650px;
+            justify-content: center;
+            align-items: center;
+        }
+
+                  #renders_lord{
+            width: 100vw;
+            height: 850px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/renders_lord.png");
+            transition: all 0.5s ease;
+            margin:auto;
+            margin-top: 0
+         
+            
+
+        }
+        @media (max-width: 768px) {
+            
+        .social-icons a,
+        .video_hima_idle video,
+        .video_astro_idle video,
+        .video_astro_idle,
+        .video_hima_idle {
+            display: none;
+            animation: none;
+            position: absolute;
+            }
+
+        .graphictunnels-svg {
+    display: flex;
+    justify-content: center; /* Centra el logo horizontalmente */
+    align-items: center; /* Centra el logo verticalmente */
+    flex: 1; /* Ocupa el espacio central */
+    position: absolute; 
+    right: 5vw;
+}
+
+    .graphictunnels-icon {
+        max-width: 50vw; /* Ajusta el tamaño del SVG para que sea más pequeño */
+        height: 5vh
+
+
+    }
+.top-bar{
+    width: 100vw;
+    height: 5vh;
+}
+             .custom-mb {
+    margin-bottom: 2.25rem; /* Valor intermedio entre mb-4 (1.5rem) y mb-5 (3rem) */
+}
+             .contact {
+        display: none; /* Oculta las flechas */
+    }
+            .cuerpo{
+                font-size: 14px;
+                padding: 20px;
+                 margin: 0px;
+                 position: relative;
+                 bottom: 12px;
+            }
+            .work{
+                width: 180px;
+                position: relative;
+                bottom:30px;
+
+            }
+
+             .work-icons {
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* Centra los íconos horizontalmente */
+        justify-content: center; /* Opcional: alinea verticalmente si hay espacio */
+    }
+
+            #icono2D {
+            background-image: url("SVG/2d_work.svg");
+            height: 165px;
+        }
+
+        #icono3D {
+            background-image: url("SVG/3d_work.svg");
+            height: 165px;
+        }
+        .social-icons a {
+         
+
+        }
+
+        .boton {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+           font-size: 15px;
+           position: relative;
+           bottom: 30px;
+           margin: auto;
+           display: block;
+        }
+
+        #doodle_hima{
+            width: 100vw;
+            position: relative;
+            bottom: 40PX;
+            right: 12px;
+
+        }
+
+        .titulo_trabajo{
+            font-size: 35px;
+            margin-left: 18px;
+            margin-top: 60px;
+        }
+
+         .titulo_trabajo.lord{
+            
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        font-size: 50px;
+        line-height: 1.2;
+        color:#333;
+        text-align: left;
+        }
+
+        #lord_titulo{
+            margin-left: 30px;
+            position: relative;
+            top: 30px;
+        }
+
+        #software_hima{
+            width: 100px;
+            height: 60px;
+            background-size: contain;
+            margin-top: -30px;
+            margin-left: 18px;
+        }
+
+        #software_lord{
+            width: 180px;
+            height: 60px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/lord_software.svg");
+            transition: all 0.5s ease;
+            margin-left: 15px;
+            position: relative;
+            bottom: 28px;
+            margin-bottom: 20px;
+
+        }
+
+        .video-hima {
+            top: 920px;
+            margin-top: -60PX;
+       }
+        .video-astro {
+            top: 610px;
+       }
+
+       .video-sheets{
+        top: 1360PX;
+        margin-top: 20px;
+       }
+        .video-sheet-hima {
+            
+            max-width: 90%;
+            margin-top: 0px;
+            margin:auto;
+        }
+
+                .posicion_texto{
+            position: relative;
+            right: 0px;
+            margin-top: 40px;
+        }
+
+        #doodle_lord{
+            width: 90vw;
+   margin-top: -140PX;
+   margin-bottom: -140PX;
+        }
+
+             #renders_lord{
+            width: 100vW;
+            height: 320px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/renders_lord.png");
+            transition: all 0.5s ease;
+            margin:auto;
+            margin-top: -40px;
+
+            
+
+        }
+
+         .btn-audio {
+            margin-bottom: 20px;
+         }
+
+             .video-lord {
+            max-width: 90VW;
+            margin-top: -40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa para el efecto de fade-in -->
+    <div class="fade-in-overlay"></div>
+
+  <!-- Barra Superior Fija -->
+    <div class="top-bar d-flex justify-content-between align-items-center">
+        <!-- Icono de Home a la Izquierda -->
+        <a href="index.html" class="logo-home"><i class="fa fa-asterisk" aria-hidden="true"></i></a>
+
+          <div class="graphictunnels-svg"> <a href="https://www.instagram.com/graphictunnels/">
+        <img src="SVG/graphictunnels.SVG" alt="graphictunnels" class="graphictunnels-icon"> </a>
+         </div>
+
+
+        <!-- Iconos de Contacto a la Derecha -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/graphictunnels/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.behance.net/evarobles7"><i class="bi bi-behance"></i></a>
+            <a href="https://www.linkedin.com/in/eva-robles-haloui-9066a1268/"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:robleshaloui@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+        </div>
+    </div>
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Row 1: 2 columns -->
+        <div class="row mb-3">
+            <div class="col-md-6 ">
+                
+                <div class="titulo_trabajo">HIMAWARI & ASTROMIAUTA</div>
+                     <div class="cuerpo">
+                    Himawari and Astromiauta are two original characters I created and animated, drawing inspiration from the popular Spanish songs "Himawari" by Axolotes Mexicanos and "En qué estrella estará" by Nena Daconte. Their design reflects my admiration for early 2000s video game aesthetics and Japanese pop culture.
+                     </div>
+                    <div id="software_hima"> </div>
+                    <div id="doodle_hima"> </div>
+                </div>  
+
+            <div class="col-md-6">
+                 <div class="video_hima_idle">
+                    <video autoplay muted loop>
+                        <source src="3D_work/idle-hima-astro2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+
+            </div>
+        </div>
+
+        <!-- Row 2: 1 column -->
+
+        <div class="row mb-3 align-items-center">
+            <div class="col">
+                <div class="video-hima">
+                    <video class="video" autoplay muted loop>
+                        <source src="3D_work/hima_animacion.mp4" type="video/mp4"> <
+                    </video>
+                <div class="container">
+                     <div class="contenedor-boton">
+                         <button class="btn-audio">AUDIO ON</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <!-- Row 3: 1 column -->
+        <div class="row mb-3 align-items-center">
+            <div class="col">
+                <div class="video-astro">
+                    <video class="video" autoplay muted loop>
+                         <source src="3D_work/astro_animacion.mp4" type="video/mp4">
+                     </video>
+                        <div class="container">
+                            <div class="contenedor-boton">
+                                <button class="btn-audio">AUDIO ON</button>
+                             </div>
+                        </div>
+                  </div>
+            </div>
+        </div>
+
+        <!-- Row 4: 2 columns -->
+        <div class="row mb-3 align-items-center">
+            <div class="col-md-6 align-items-center">
+                 <div class="col-md-6">
+                        <div class="video-sheet-hima">
+                             <video class="video" autoplay muted loop>
+                                 <source src="3D_work/video-sheet-hima.mp4" type="video/mp4">
+                              </video>
+                        </div>      
+                 </div>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-6">
+                    <div class="video-sheet-hima">
+                          <video class="video" autoplay muted loop>
+                             <source src="3D_work/video-sheet-astro.mp4" type="video/mp4">
+                          </video>
+                   </div>
+             </div>    
+
+            </div>
+        </div>
+
+        <!-- Row 5: 2 columns -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                 <div class="titulo_trabajo" >LORD BARTHOLOMEW MONTAGUE</div>
+                      <div class="cuerpo">
+                          This character was designed and modeled with the concept of being an elderly boxer. My proposal focused on a former aristocrat ruined by his own greed, who turned to street boxing as a last resort. However, his lack of skill left him in an even worse state, embodying both his downfall and his struggle to survive. It is fully hand-painted and sculpted.
+                      </div>
+
+        
+                 <div id="software_lord"> </div>
+            </div>
+
+            
+            <div class="col-md-6 ">
+                 <div id="doodle_lord"> </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Row 6: 1 column -->
+        <div class="row mb-3">
+            <div class="col">
+                <div id="renders_lord"> </div>
+            </div>
+        </div>
+
+        <!-- Row 7: 1 column -->
+        <div class="row mb-3 align-items-center">
+            <div class="col align-items-center">
+                <div class="align-items-center">
+                <div class="video-lord">
+                    <video class="video" autoplay muted loop>
+                        <source src="3D_work/lord_video.mp4" type="video/mp4">
+                    </video>
+                     <button class="btn-audio">AUDIO ON</button>
+                 </div>    
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 9: 1 column -->
+
+    
+
+
+
+
+
+
+<div class="container text-center my-5">
+    <div class="row">
+        <div class="col-md-4 custom-mb">
+            <a href="2D_work.html" class="btn-custom-black mx-2">
+            DESIGN WORK
+            </a>
+        </div>
+        <div class="col-md-4 custom-mb">
+            <a href="CV.html" class="btn-custom-black mx-2">
+                ABOUT ME
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="index.html" class="btn-custom-black mx-2">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="row mb-3">
+            <div class="col align-items-center container text-center">
+                <div class="social-icons-bottom mt-3">
+                    <a href="https://www.instagram.com/graphictunnels/" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-behance"></i></a>
+                    <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <a href="mailto:robleshaloui@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="height: 30px;"></div>
+
+
+    <!-- Bootstrap JS Bundle -->
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+    <script>
+ // Seleccionar todos los botones y videos
+        const videos = document.querySelectorAll('.video'); // Selecciona todos los videos
+        const buttons = document.querySelectorAll('.btn-audio'); // Selecciona todos los botones
+
+        // Iterar sobre los botones y enlazar comportamiento
+        buttons.forEach((button, index) => {
+            const video = videos[index]; // Relaciona cada botón con su respectivo video
+
+            button.addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false; // Activa el audio
+                    button.textContent = 'AUDIO OFF';
+                } else {
+                    video.muted = true; // Silencia el audio
+                    button.textContent = 'AUDIO ON';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

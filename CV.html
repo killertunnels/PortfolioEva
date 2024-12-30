@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Eva</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="icon" href="SVG/icon.svg">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        html, body {
+    margin: 0;
+    margin-top: 00px;
+    padding: 0;
+    overflow-x: hidden; /* Hides horizontal overflow */
+    width: 100%; /* Ensures full width usage */
+    box-sizing: border-box;
+}
+
+        .fade-in-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white; /* Fondo blanco para el fade-in */
+    z-index: 9999; /* Asegúrate de que esté encima de todo */
+    animation: fadeOut 1s ease-in-out forwards; /* Animación */
+    pointer-events: none;
+}
+
+/* Animación del fade-in */
+@keyframes fadeOut {
+    0% {
+        opacity: 1; /* Completamente visible */
+    }
+    100% {
+        opacity: 0; /* Completamente invisible */
+    }
+}
+
+        .logo {
+            width: 700px;
+            height: 320px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/logo.SVG");
+            transition: all 0.5s ease;
+            display: block;
+        }
+
+        
+        .work {
+            width: 200px;
+            height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: all 0.5s ease;
+            position: relative;
+            bottom: 350px;
+        }
+
+        #icono2D {
+            background-image: url("SVG/2d_work.svg");
+        }
+
+        #icono3D {
+            background-image: url("SVG/3d_work.svg");
+        }
+
+
+        .cuerpo {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 600;
+            text-align: left;
+            margin-top: 20px;
+           
+        }
+
+           .boton {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 900;
+            text-align: center;
+           font-size: 15px;
+        }
+
+
+      .destacado {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 800;
+            text-align: left;
+           
+        }
+        .btn-custom {
+            border: 3px solid #5862f7;
+            border-radius: 50px;
+            color: #5862f7;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+           
+        }
+
+        .btn-custom:hover {
+            background-color: #5862f7;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5862f7;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+                .btn-custom-black {
+            border: 3px solid #333;
+            border-radius: 50px;
+            color: #333;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+            font-family: Montserrat;
+            text-decoration: none;
+           
+        }
+
+        .btn-custom-black:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+         .video_hima_idle {
+
+            width: 500px;
+            height: auto;
+            z-index: -12; /* El video queda detrás del contenido */
+        }
+
+        /* Ajuste del video */
+        .video_hima_idle video {
+            width: 700px;
+            height: auto;
+            object-fit: cover; /* Escalar el video para cubrir el área */
+            margin-top: 80px;
+        }
+
+         .video_astro_idle {
+            position: absolute;
+            top:50px;
+            left: 1150px;
+            width: 20px;
+            height: auto;
+            z-index: -12; /* El video queda detrás del contenido */
+        }
+
+        /* Ajuste del video */
+        .video_astro_idle video {
+            width: 400px;
+            height: auto;
+            object-fit: cover; /* Escalar el video para cubrir el área */
+        }
+
+        .top-bar {
+            position: fixed;
+            top: -100px; /* Empieza fuera de la vista */
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            z-index: 1000;
+            text-align: center;
+            font-size: 1.5rem;
+            animation: slideDown 2s ease-out forwards; /* Animación al cargar */
+        }
+
+        /* Definición de la animación */
+        @keyframes slideDown {
+            from {
+                top: -100px; /* Comienza fuera */
+            }
+            to {
+                top: 0; /* Termina en su posición fija */
+            }
+        }
+
+
+        .logo-home {
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #5862f7; /* Color al pasar el ratón */
+        }
+
+    .social-icons-bottom a {
+            color: #333;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+ 
+            box-sizing: border-box;
+            padding-bottom: 40px;
+        }
+
+        .social-icons-bottom a:hover {
+            color: #5862f7; /* Color al pasar el ratón */
+        }
+
+        .work-icons {
+            display: flex;
+            flex-direction: column; /* Coloca los íconos uno encima del otro */
+            align-items: flex-end; /* Alinea ambos íconos a la derecha */
+        }
+
+        .graphictunnels-svg {
+         display: flex;
+        justify-content: center; /* Centra el contenido horizontalmente */
+        flex: 1; /* Ocupa el espacio central */
+        }
+
+        .graphictunnels-icon {
+        width: 250px; /* Ajusta el tamaño del SVG */
+        height: auto; /* Mantiene la proporción */
+        }
+
+         .titulo_trabajo{
+            
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        font-size: 35px;
+        line-height: 1.2;
+        color:#333;
+        text-align: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #5961F4;
+        }
+
+        .rotulo{
+            width: 50%;
+            height:auto;
+            margin-top: 100px;
+        }
+
+        #doodle_hima{
+            width: 550px;
+            height: 250px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/hima sticker.png");
+            transition: all 0.5s ease;
+            position: relative;
+            bottom: 30px;
+        }
+        #software_hima{
+            width: 150px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/hima_software.svg");
+            transition: all 0.5s ease;
+
+        }
+
+                #software_lord{
+            width: 267px;
+            height: 100px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/lord_software.svg");
+            transition: all 0.5s ease;
+
+        }
+
+
+                    .video-lord {
+            top: 1300px;
+            max-width: 600px;
+            align-items: center;
+        }
+
+         .video-container {
+
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+
+        .video-hima {
+           
+            max-width: 600px;
+            margin:auto;
+            margin-top: 20px;
+        }
+
+        .video-astro {
+            top: 750px;
+            max-width: 1100px;
+            margin:auto;
+        }
+
+            .video-lord {
+            top: 4070px;
+            max-width: 600px;
+            margin: auto;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .video-sheets {
+            top: 2100px;
+            max-width: 1400px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .contenedor-boton{
+            text-align: center;
+        }
+
+        .btn-audio {
+            margin-top: 30px;
+            margin-bottom: 30PX;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #ffffff;
+            border: 3px solid #5862f7;
+            border-radius: 50px;
+            color: #5862f7;
+            font-weight: 800;
+            padding: 10px 20px;
+            transition: all 0.3s;
+   
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .btn-audio:hover {
+            background-color: #5862f7;
+            color: white;
+        }
+
+        .posicion_texto{
+            position: relative;
+            right: 75px;
+            margin-top: 80px;
+        }
+
+                #doodle_lord{
+            width: 600px;
+            height: 500px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/bocetos_ancianito.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+   
+            
+        }
+
+            #render1_lord{
+            width: 595px;
+            height: 750px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/render_1.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+            position: relative;
+            left: 70px;
+            bottom:550px;
+            
+        }
+
+        #render2_lord{
+            width: 500px;
+            height: 750px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/render_2.png");
+            transition: all 0.5s ease;
+            margin-left: auto;
+            position: relative;
+            left: 70px;
+            bottom:550px;
+            
+        }
+
+                .botones_final{
+            position: relative;
+            top: 300px;
+            margin:auto;
+        }
+
+         .video-sheet-hima {
+            width: 650px;
+            justify-content: center;
+            align-items: center;
+        }
+
+                  #renders_lord{
+            width: 100vw;
+            height: 850px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/renders_lord.png");
+            transition: all 0.5s ease;
+            margin:auto;
+            margin-top: 0
+         
+            
+
+        }
+
+        .software_lang{
+            width: 80%;
+            height: auto;
+            margin-top: 140px;
+            align-items: right;
+            margin-left: 15%
+        }
+        @media (max-width: 768px) {
+            
+        .social-icons a,
+        .video_hima_idle video,
+        .video_astro_idle video,
+        .video_astro_idle,
+        .video_hima_idle {
+            display: none;
+            animation: none;
+            position: absolute;
+            }
+
+        .software_lang{
+            width: 90%;
+            height: auto;
+            align-items: center;
+            margin:auto;
+        }
+
+        .graphictunnels-svg {
+    display: flex;
+    justify-content: center; /* Centra el logo horizontalmente */
+    align-items: center; /* Centra el logo verticalmente */
+    flex: 1; /* Ocupa el espacio central */
+    position: absolute; 
+    right: 5vw;
+}
+
+    .graphictunnels-icon {
+        max-width: 50vw; /* Ajusta el tamaño del SVG para que sea más pequeño */
+        height: 5vh
+
+
+    }
+
+          .destacado {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 800;
+            text-align: left;
+           
+           
+        }
+.top-bar{
+    width: 100vw;
+    height: 5vh;
+}
+             .custom-mb {
+    margin-bottom: 2.25rem; /* Valor intermedio entre mb-4 (1.5rem) y mb-5 (3rem) */
+}
+             .contact {
+        display: none; /* Oculta las flechas */
+    }
+            .cuerpo{
+                font-size: 14px;
+                padding: 20px;
+                 margin: 0px;
+                 position: relative;
+                 bottom: 12px;
+            }
+            .work{
+                width: 180px;
+                position: relative;
+                bottom:30px;
+
+            }
+
+             .work-icons {
+        display: flex;
+        flex-direction: row;
+        align-items: center; /* Centra los íconos horizontalmente */
+        justify-content: center; /* Opcional: alinea verticalmente si hay espacio */
+    }
+
+            #icono2D {
+            background-image: url("SVG/2d_work.svg");
+            height: 165px;
+        }
+
+        #icono3D {
+            background-image: url("SVG/3d_work.svg");
+            height: 165px;
+        }
+        .social-icons a {
+         
+
+        }
+
+        .boton {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+           font-size: 15px;
+           position: relative;
+           bottom: 30px;
+           margin: auto;
+           display: block;
+        }
+
+        #doodle_hima{
+            width: 100vw;
+            position: relative;
+            bottom: 40PX;
+            right: 12px;
+
+        }
+
+        .titulo_trabajo{
+            font-size: 35px;
+           
+            margin-top: 7px;
+        }
+
+         .titulo_trabajo.lord{
+            
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        font-size: 50px;
+        line-height: 1.2;
+        color:#333;
+        text-align: left;
+        }
+
+        #lord_titulo{
+            margin-left: 30px;
+            position: relative;
+            top: 30px;
+        }
+
+        #software_hima{
+            width: 100px;
+            height: 60px;
+            background-size: contain;
+            margin-top: -30px;
+            margin-left: 18px;
+        }
+
+        #software_lord{
+            width: 180px;
+            height: 60px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("SVG/lord_software.svg");
+            transition: all 0.5s ease;
+            margin-left: 15px;
+            position: relative;
+            bottom: 28px;
+            margin-bottom: 20px;
+
+        }
+
+        .video-hima {
+            top: 920px;
+            margin-top: -60PX;
+       }
+        .video-astro {
+            top: 610px;
+       }
+
+       .video-sheets{
+        top: 1360PX;
+        margin-top: 20px;
+       }
+        .video-sheet-hima {
+            
+            max-width: 90%;
+            margin-top: 0px;
+            margin:auto;
+        }
+
+                .posicion_texto{
+            position: relative;
+            right: 0px;
+            margin-top: 40px;
+        }
+
+        #doodle_lord{
+            width: 90vw;
+   margin-top: -140PX;
+   margin-bottom: -140PX;
+        }
+
+             #renders_lord{
+            width: 100vW;
+            height: 320px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("3D_work/renders_lord.png");
+            transition: all 0.5s ease;
+            margin:auto;
+            margin-top: -40px;
+
+            
+
+        }
+
+         .btn-audio {
+            margin-bottom: 20px;
+         }
+
+             .video-lord {
+            max-width: 90VW;
+            margin-top: -40px;
+        }
+
+              .rotulo{
+            width: 60%;
+            height:auto;
+            margin-top:70px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Capa para el efecto de fade-in -->
+    <div class="fade-in-overlay"></div>
+
+  <!-- Barra Superior Fija -->
+    <div class="top-bar d-flex justify-content-between align-items-center">
+        <!-- Icono de Home a la Izquierda -->
+        <a href="index.html" class="logo-home"><i class="fa fa-asterisk" aria-hidden="true"></i></a>
+
+          <div class="graphictunnels-svg"> <a href="https://www.instagram.com/graphictunnels/">
+        <img src="SVG/graphictunnels.SVG" alt="graphictunnels" class="graphictunnels-icon"> </a>
+         </div>
+
+
+        <!-- Iconos de Contacto a la Derecha -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/graphictunnels/"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.behance.net/evarobles7"><i class="bi bi-behance"></i></a>
+            <a href="https://www.linkedin.com/in/eva-robles-haloui-9066a1268/"><i class="bi bi-linkedin"></i></a>
+            <a href="mailto:robleshaloui@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+        </div>
+    </div>
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-4">
+        <!-- Row 1: 2 columns -->
+        <div class="row mb-3">
+            <div class="col-md-6 ">
+                
+                <div class="rotulo" >
+                    <div><img src="CV/SVG/rotulo_cv.svg"></div>
+                </div>
+                     <div class="cuerpo">
+                    Although all my designs share an unique essence, I like to be <span style="color: #5961F4">versatile</span> and experiment to adapt to the needs of each project. I am a very <span style="color: #5961F4">creative</span> and <span style="color: #5961F4">proactive</span> person who always has projects in mind. I like to pay attention to all the details and be organized. <p></p>Even though I am very <span style="color: #5961F4">autonomous</span> and <span style="color: #5961F4">independent</span>, I enjoy working in a <span style="color: #5961F4">team</span> and sharing experiences with colleagues who share the same passion as I do. I am someone who is eager to keep <span style="color: #5961F4">learning</span>, always seeking new skills and knowledge that I can apply to my designs to provide the end user with a more satisfying experience.
+                     </div>
+                    
+                </div>  
+
+            <div class="col-md-6">
+                <div class="software_lang">
+                 <img src="CV/SVG/software_lang.svg">
+                </div>
+            </div>
+        </div>
+<div class="cuerpo">
+    <div class="container py-4">
+        <!-- Row 1: Education and Experience -->
+        <div class="row mb-3">
+            <!-- Education in Column 1 -->
+            <div class="col-md-6">
+                <div class="titulo_trabajo">EDUCATION</div>
+                <div class="destacado">
+                    <div style="color: #5961F4">BACHELOR'S DEGREE IN DESIGN</div>
+                    Complutense University of Madrid (2021-2025)
+                </div>
+                <ul>
+                    <li>2023 Honors in 3D Modeling</li>
+                    <li>2023 Honors in Advanced 3D Modeling</li>
+                    <li>2023 Honors in Theory of the Image</li>
+                    <li>2022 Honors in Fundamentals of Design</li>
+                    <li>2022 Special Mention in Volume</li>
+                </ul>
+                <p>Participation in the initiative "Development of High Intellectual Abilities at the University" (2023).</p>
+                <p>Student representative in the Fine Arts Faculty Board (2024-2025).</p>
+                <p>Participation in the Science Week in the Creative Inspiration Techniques with New Technologies workshop (2024).</p>
+                 <div class="destacado">
+                    <div style="color: #5961F4">BACCALAUREATE IN VISUAL ARTS</div>
+                    IES Federico García Lorca (2019-2021)
+                </div>
+                <p>9,7 out of 10 grade average.</p>
+
+            </div>
+
+            <!-- Experience in Column 2 -->
+            <div class="col-md-6">
+                <div class="titulo_trabajo">EXPERIENCE</div>
+                <div class="destacado">
+                    <div style="color: #5961F4">GRAPHIC AND WEB DESIGN INTERN</div>
+                    Complutense University of Madrid (2024-2025)
+                </div>
+                <p>Graphic design, content creation for social media, and web design for the Information Service. I worked in <a href="https://www.ucm.es/informacion">the official Information Service website</a> during my intership, as well as in their visual identity and communication strategy.</p>
+
+                <div class="destacado">
+                    <div style="color: #5961F4">DIGITAL DESIGN INTERN</div>
+                    Smartbrand (2023-2024)
+                </div>
+                <p>Graphic design for social media for brands such as Ferrari, Nissan, Peugeot, Volkswagen, Kia, Fiat, Audi, Jeep, Bentley, Editorial Planeta, and more.</p>
+
+                <div class="destacado">
+                    <div style="color: #5961F4">GRAPHIC AND PRODUCT DESIGNER</div>
+                    Aguirre & Cía (2023)
+                </div>
+                <p>Graphic design and product for brands such as Bullpadel, +8000, and John Smith. I designed <a href="https://www.mas8000.es/producto/m-248215/" target="_blank"> this +8000 backpack</a> and this <a href="https://www.johnsmith.es/kid/m-24203/" target="_blank">John Smith one</a>, which are currently being commercialized.</p>
+            </div>
+        </div>
+
+        <!-- Row 2: Voluntary Work and Publications -->
+        <div class="row mb-3">
+            <!-- Voluntary Work in Column 1 -->
+            <div class="col-md-6">
+                <div class="titulo_trabajo">VOLUNTARY WORK</div>
+                <div class="destacado">
+                    <div style="color: #5961F4">GRAPHIC DESIGN</div>
+                    ONG Entreculturas Foundation (2023)
+                </div>
+                <p>Design and creation of pieces for the interactive, educational, and traveling exhibition on forced migrations worldwide.</p>
+
+                <div class="destacado">
+                    <div style="color: #5961F4">DESIGN AND MURAL PAINTING</div>
+                    Ayllón Municipality (2024)
+                </div>
+                <p>Design and mural painting of the town's school sports center.</p>
+
+
+                <div class="destacado">
+                    <div style="color: #5961F4">STUDENT MENTOR</div>
+                    Complutense University of Madrid (2025)
+                </div>
+                <p>Mentorship and orientation of first-year students.</p>
+
+            </div>
+
+            <!-- Publications in Column 2 -->
+            <div class="col-md-6">
+                <div class="titulo_trabajo">PUBLICATIONS</div>
+                <div class="destacado">
+                    <div style="color: #5961F4">(BOOK CHAPTER) HOW DO WE SEE DALTONISM?</div>
+                    In book: Investigaciones Daciu 2022-2023 (pp.379-383)
+                </div>
+                <p>Publisher: Fundación Avanza; Gesernet · 8 Dec. 2023</p>
+                <a href="https://www.researchgate.net/publication/377007948_Como_vemos_el_daltonismo_Encuesta_en_Bellas_Artes_UCM" target="_blank">Read the article here</a>
+            </div>
+        </div>
+
+        <!-- Row 3: Exhibitions and Scholarships -->
+        <div class="row mb-3">
+            <!-- Exhibitions in Column 1 -->
+            <div class="col-md-6">
+                <div class="titulo_trabajo">EXHIBITIONS</div>
+                <div class="destacado">
+                    <div style="color: #5961F4">SCIENCE WEEK EXHIBITION</div>
+                    Fine Arts Complutense University of Madrid (2024)
+                </div>
+                <p>Exhibition of my work created in the Creative Inspiration Techniques Workshop on Concept Art. This activity took place at La Distribuidora space in the Faculty of Fine Arts at the Complutense University of Madrid, from November 15 to 22, 2024.</p>
+
+                <div class="destacado">
+                    <div style="color: #5961F4">AYLLÓN ART EXHIBITION</div>
+                    Ayllón Contemporary Art Museum (2024)
+                </div>
+                <p>Exhibition at the Museum of Contemporary Art of Ayllón as part of the Ayllón 2024 Artistic Residency Grant with my graphic design work.</p>
+
+                <div class="destacado">
+                    <div style="color: #5961F4">A PUNTO Y RADIANTES EXHIBITION</div>
+                    Fine Arts UCM (2024)
+                </div>
+                <p>Exhibition at the exhibition space in the Faculty of Fine Arts as part of the Ayllón 2024 Artistic Residency Grant with my graphic design work.</p>
+            </div>
+
+            <!-- Scholarships in Column 2 -->
+            <div class="col-md-6">
+                <div class="titulo_trabajo">SCHOLARSHIPS</div>
+                <div class="destacado">
+                    <div style="color: #5961F4">AYLLÓN ARTISTIC RESIDENCY SCHOLARSHIP</div>
+                    Fine Arts Complutense University of Madrid (2024)
+                </div>
+                <p>In this artistic residency, I was awarded the spot reserved for a Design student. I focused on creating posters, catalogs, and labels for my fellow Fine Arts grant recipients.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container text-center my-5">
+    <div class="row">
+        <div class="col-md-4 custom-mb">
+            <a href="2D_work.html" class="btn-custom-black mx-2">
+                DESIGN WORK
+            </a>
+        </div>
+        <div class="col-md-4 custom-mb">
+            <a href="3D_work2.html" class="btn-custom-black mx-2">
+                3D WORK
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="index.html" class="btn-custom-black mx-2">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="row mb-3">
+            <div class="col align-items-center container text-center">
+                <div class="social-icons-bottom mt-3">
+                    <a href="https://www.instagram.com/graphictunnels/" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-behance"></i></a>
+                    <a href="https://www.behance.net/evarobles7" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    <a href="mailto:robleshaloui@gmail.com" target="_blank"><i class="bi bi-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="height: 30px;"></div>
+
+
+    <!-- Bootstrap JS Bundle -->
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+    <script>
+ // Seleccionar todos los botones y videos
+        const videos = document.querySelectorAll('.video'); // Selecciona todos los videos
+        const buttons = document.querySelectorAll('.btn-audio'); // Selecciona todos los botones
+
+        // Iterar sobre los botones y enlazar comportamiento
+        buttons.forEach((button, index) => {
+            const video = videos[index]; // Relaciona cada botón con su respectivo video
+
+            button.addEventListener('click', () => {
+                if (video.muted) {
+                    video.muted = false; // Activa el audio
+                    button.textContent = 'AUDIO OFF';
+                } else {
+                    video.muted = true; // Silencia el audio
+                    button.textContent = 'AUDIO ON';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
